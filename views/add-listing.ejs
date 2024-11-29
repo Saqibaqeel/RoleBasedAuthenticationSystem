@@ -1,0 +1,63 @@
+<% layout('layouts/boilerplate') %>
+
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Add New Listing</h1>
+
+    <form action="/listings" method="POST" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="name" class="form-label">Listing Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+        <div class="invalid-feedback">
+          Please provide a listing name.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image URL </label>
+        <input type="text" class="form-control" id="image" name="image" placeholder="enter Image url">
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <input type="number" class="form-control" id="price" name="price" required>
+        <div class="invalid-feedback">
+          Please provide a price.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location:</label>
+        <input type="text" class="form-control" id="location" name="location" required>
+        <div class="invalid-feedback">
+          Please provide a location.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Listing</button>
+    </form>
+
+    <a href="/listings" class="btn btn-secondary mt-3">Back to Listings</a>
+  </div>
+
+  <script>
+    (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+  </script>
+</body>
